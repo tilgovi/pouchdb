@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+
+  "name": "PouchDB Server",
+  "description": "PouchDB HTTP Server",
+  "version": "0.0.1",
+
+  "minimum_chrome_version": "24",
+
+  "app": {
+    "background": {
+      "scripts": ["app.js"]
+    }
+  },
+
+  "permissions": [
+    {
+      "socket": ["tcp-listen"]
+    },
+    "experimental"
+  ]
+}
