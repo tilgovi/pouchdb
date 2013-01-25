@@ -707,8 +707,7 @@ HttpPouch.valid = function() {
 
 if (typeof module !== 'undefined' && module.exports) {
   // running in node
-  var pouchdir = '../';
-  this.Pouch = require(pouchdir + 'pouch.js')
+  this.Pouch = require('../pouch.js')
   this.ajax = Pouch.utils.ajax;
 }
 
