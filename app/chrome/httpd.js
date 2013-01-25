@@ -1,21 +1,15 @@
-var buffer = require('buffer')
-, events = require('events')
-, http = require('http')
-, stream = require('stream')
-, util = require('util')
-;
-
 exports.PouchServer = PouchServer
+
+
+var http = require('http');
 
 
 var socket = chrome.socket || chrome.experimental.socket;
 var dns = chrome.experimental.dns;
 
 
-util.inherits(PouchServer, events.EventEmitter);
 function PouchServer() {
   if (!(this instanceof PouchServer)) return new PouchServer();
-  events.EventEmitter.call(this);
 
   var self = this;
 
@@ -37,9 +31,29 @@ PouchServer.prototype.stop = function () {
 
 
 PouchServer.prototype._handleRequest = function (req, res) {
-  var url = req.url;
+  var url = req.url
+  , responseJSON = null
+  ;
 
-  res.writeHead(200);
-  res.write('Hello, world!');
-  res.end();
+  if (url.match(/\/$/)) {
+    responseJSON = {
+      pouchdb: 'Welcome',
+      version: '0.0.4'
+    }
+    res.writeHead(200, {
+      'Content-Type': 'application/json'
+    });
+    res.write(JSON.stringify(responseJSON));
+    res.end();
+  } else {
+    responseJSON = {
+      error: 'bad_request',
+      reason: 'no_such_route'
+    };
+    res.writeHead(400, {
+      'Content-Type': 'application/json'
+    });
+    res.write(JSON.stringify(responseJSON));
+    res.end();
+  }
 };
