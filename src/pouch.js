@@ -10,7 +10,7 @@ var Pouch = function Pouch(name, opts, callback) {
     callback = opts;
     opts = {};
   }
-  
+
   if (typeof name === 'object') {
     opts = name;
     name = undefined;
