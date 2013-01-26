@@ -13,7 +13,7 @@ Install chromify with `npm install chromify`. Then build the app.js
 bundle with the following command (unreasonably complicated for now).
 
 ```
-$ browserify -e app/chrome/background.js -r './src/adapters/pouch.idb.js:/pouchdb/src/adapters/pouch.leveldb.js' -r './src/pouch.js:/pouchdb/src/pouch.js' -e './src/deps/uuid.js'--plugin chromify -w -o app/chrome/app.js 
+$ browserify -e app/chrome/background.js -r './src/adapters/pouch.idb.js:/pouchdb/src/adapters/pouch.leveldb.js' -r './src/pouch.js:/pouchdb/src/pouch.js' -e './src/deps/uuid.js' --plugin chromify -o app/chrome/app.js
 ```
 
 The http-parser that ships with chromify includes the mime types files needed
